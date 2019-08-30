@@ -1,4 +1,4 @@
-#Load data to GP
+# Load data to GP
 Для выгрузки данных из спарка в гринплам сущетсвует несколько способов:
  - Внешние таблицы 
   - gpfdist
@@ -12,7 +12,7 @@
  что позволяет масштабировать пропускную способность горизонтально. Для быстрой работы gpload реализован на C++ и не имеет каких-либо
  конекторов для jvm языков. (Так же параллельная загрузка не гарантирует порядок данных, порядок гарантирует copy и реализации через коннектор)
  
- #Внешние таблицы
+ ## Внешние таблицы
  
  Решения через внешние таблицы требуют промежуточную запись в файловую систему(можно использовать как доп. чекпоинты?),
  а операция записи на ROM является достаточно дорогой (как и в MR). Поэтому используют named pipes(рекомендации arenadata support),
@@ -26,15 +26,15 @@
  mkfifo /tmp/pipes/my_pipe; gpfdist -d /tmp/pipes
  ```
  
- (Пример вывода в scala в named-pipe)[https://stackoverflow.com/questions/28095469/stream-input-to-external-process-in-scala]
+ [Пример вывода в scala в named-pipe](https://stackoverflow.com/questions/28095469/stream-input-to-external-process-in-scala)
  Сделать через pipe метод RDD ?
  
- Имеются (старые реализации gpfdist)[https://github.com/spring-cloud-stream-app-starters/gpfdist] сервера gpfdist для springXD(тоже pivotal).
+ Имеются [старые реализации gpfdist](https://github.com/spring-cloud-stream-app-starters/gpfdist) сервера gpfdist для springXD(тоже pivotal).
  (Медленно и ненадежно).
  
  Реализация через посторонние программы дает меньше контроля/мониторинга всего процесса и с архитектурной т.з. - не есть ок.
  
- #(COPY)[https://gpdb.docs.pivotal.io/43190/ref_guide/sql_commands/COPY.html] 
+ ## [COPY](https://gpdb.docs.pivotal.io/43190/ref_guide/sql_commands/COPY.html)
  Copy аналогичен одноименному copy в постгрес(gp - форк pg, в 5м гринпламе postgres 8.2+).
  И в jdbc коннекторе postgresql имеется copyManager, который переводит поток байт в таблицы pg(gp).
  ```
@@ -51,7 +51,7 @@
  Достаточно быстрый для малых-средних кластеров(с малым (до 10) количеством сегментов скорость copy может быть близка к gpfdist), подобным способом вы можете и читать данные, так же быстрее(х10-100 в сравнении с обычным jdbc).
  Реализацию коннектора через copy для df spark'a можете найти в этом репозитории в директории spark-copy-throw-master.
  
- #Распределенный COPY
+ ## Распределенный COPY
  GP имеет сигнатуру COPY с указанием сегмента:
  ```COPY $tableName FROM $dist-file ON SEGMENT```
  В данном случае ваше приложение должно взять на себя ответственность за распределение на сегмент по distributed полям.
