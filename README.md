@@ -1,8 +1,8 @@
 # Load data to GP
 Для выгрузки данных из спарка в гринплам сущетсвует несколько способов:
  - Внешние таблицы 
-  - gpfdist
-  - pxf (only hdfs?)
+ - - gpfdist
+ - - pxf (only hdfs?)
  - COPY (postgres)
  - Напрямую через драйвер
  
