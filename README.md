@@ -30,7 +30,7 @@
  ```
  
  [Пример вывода в scala в named-pipe](https://stackoverflow.com/questions/28095469/stream-input-to-external-process-in-scala)
- Сделать через pipe метод RDD ?
+ Оптимальным вариантом будет rdd.pipe('gdfdist -f')
  
  Имеются [старые реализации gpfdist](https://github.com/spring-cloud-stream-app-starters/gpfdist) сервера gpfdist для springXD(тоже pivotal).
  (Медленно и ненадежно).
