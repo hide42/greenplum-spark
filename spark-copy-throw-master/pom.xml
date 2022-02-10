@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <encoding>UTF-8</encoding>
         <scala.version>2.11</scala.version>
-        <postgresql.ver>9.3-1102-jdbc41</postgresql.ver>
+        <postgresql.ver>42.2.25</postgresql.ver>
         <scala-library.version>2.11.8</scala-library.version>
     </properties>
 
