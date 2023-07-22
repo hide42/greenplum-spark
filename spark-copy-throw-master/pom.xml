@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
         <jdk.encoding>utf-8</jdk.encoding>
-        <spark.version>2.3.1</spark.version>
+        <spark.version>2.4.8</spark.version>
         <resource.encoding>utf-8</resource.encoding>
         <deploy.dir>../deploy</deploy.dir>
         <maven.compiler.source>1.8</maven.compiler.source>
